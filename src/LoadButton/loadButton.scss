@@ -14,4 +14,8 @@ button {
     box-shadow: 0px 2px 0px 0px #0000008a;
     top: 3px;
   }
+  &:disabled {
+    background: #554955;
+    border-color: #413e40;
+  }
 }

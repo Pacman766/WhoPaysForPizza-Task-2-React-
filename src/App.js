@@ -1,9 +1,12 @@
 import React from 'react';
 import './app.scss';
 
-import Wrapper from './Wrapper/Wrapper';
+import Header from './Header/Header';
 import { useState } from 'react';
 import LoadButton from './LoadButton/LoadButton';
+import TotalTable from './TotalTable/TotalTable';
+import Pizza from './Pizza/Pizza'; 
+import Description from "./Description/Description";
 
 export default function App() {
   const [error, setError] = useState(undefined);
@@ -115,19 +118,21 @@ export default function App() {
   };
 
   return (
-    <div className="App">
-      <Wrapper/>
-      <LoadButton onClick={handleClick} isLoading={isLoading}/>
+    <div>
+      <Header />
+      <LoadButton onClick={handleClick} isLoading={isLoading} />
       {!error ? (
         <>
           {isLoading ? (
-            <p>Waiting...</p>
+            <p> Waiting... </p>
           ) : (
             onceLoaded && (
-              <TotalTable pizzaEaters={diets} orderDetails = {orderDetails}
-              currencyExchangeRates={currencyExchangeRates}
-              onPayClick={handleClick}
-              diet={diets}
+              <TotalTable
+                pizzaEaters={diets}
+                orderDetails={orderDetails}
+                currencyExchangeRates={currencyExchangeRates}
+                onPayClick={handlePayClick}
+                diets={diets}
               />
             )
           )}
@@ -136,11 +141,24 @@ export default function App() {
           ) : (
             onceLoaded && (
               <Pizza
-              pizzaEater
+                pizzaEatersCount={diets.length}
+                orderDetails={orderDetails}
+              />
             )
-          )
-        }
+          )}
+          {isLoading ? (
+            <p> </p>
+          ) : (
+            onceLoaded && (
+              <Description
+                allPeople={allPeople}
+                pizzaEatersCount={diets.length}
+              />
+            )
+          )}
         </>
+      ) : (
+        <p>Something went wrong :(</p>
       )}
     </div>
   );
