@@ -1,8 +1,9 @@
 import React from 'react';
-import './app.sass';
+import './app.scss';
 
 import Wrapper from './Wrapper/Wrapper';
 import { useState } from 'react';
+import LoadButton from './LoadButton/LoadButton';
 
 export default function App() {
   const [error, setError] = useState(undefined);
@@ -116,6 +117,31 @@ export default function App() {
   return (
     <div className="App">
       <Wrapper/>
+      <LoadButton onClick={handleClick} isLoading={isLoading}/>
+      {!error ? (
+        <>
+          {isLoading ? (
+            <p>Waiting...</p>
+          ) : (
+            onceLoaded && (
+              <TotalTable pizzaEaters={diets} orderDetails = {orderDetails}
+              currencyExchangeRates={currencyExchangeRates}
+              onPayClick={handleClick}
+              diet={diets}
+              />
+            )
+          )}
+          {isLoading ? (
+            <p> </p>
+          ) : (
+            onceLoaded && (
+              <Pizza
+              pizzaEater
+            )
+          )
+        }
+        </>
+      )}
     </div>
   );
 }

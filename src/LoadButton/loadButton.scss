@@ -1,0 +1,17 @@
+button {
+  font-size: 22px;
+  font-weight: 700;
+  padding: 15px 45px;
+  border-radius: 100px;
+  position: relative;
+  -webkit-box-shadow: 0px 5px 0px 0px #0000008a;
+  box-shadow: 0px 5px 0px 0px #0000008a;
+  margin-bottom: 50px;
+
+  &:active {
+    background-color: #30e8bf;
+    -webkit-box-shadow: 0px 2px 0px 0px #0000008a;
+    box-shadow: 0px 2px 0px 0px #0000008a;
+    top: 3px;
+  }
+}
