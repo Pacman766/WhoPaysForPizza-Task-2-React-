@@ -1,5 +1,5 @@
 import React from "react";
-import "./description.scss";
+import "./sumText.scss";
 
 const Description = ({ allPeople, pizzaEatersCount }) => {
   return (

@@ -1,13 +1,13 @@
 import React from 'react';
 import './pizza.scss';
-import Slices from './Slices/Slices';
+import Pieces from './Pieces/Pieces';
 
 const Pizza = ({ pizzaEatersCount, orderDetails }) => {
   return (
     <div className="pizza-container">
       <div className="pizza">
         {orderDetails.type === 'meat'}
-        <Slices pizzaEatersCount={pizzaEatersCount} />
+        <Pieces pizzaEatersCount={pizzaEatersCount} />
       </div>
     </div>
   );

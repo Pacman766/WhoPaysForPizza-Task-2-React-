@@ -1,5 +1,5 @@
 import React from "react";
-import './loadButton.scss';
+import './mainButton.scss';
 
 const LoadButton = ({onClick, isLoading = false}) => {
   return <>

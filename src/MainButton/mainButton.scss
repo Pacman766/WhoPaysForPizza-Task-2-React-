@@ -8,14 +8,17 @@ button {
   margin-bottom: 50px;
   position: relative;
 
-  &:active {
+  &:active,&:hover {
     background-color: #30e8bf;
     -webkit-box-shadow: 0px 2px 0px 0px #0000008a;
     box-shadow: 0px 2px 0px 0px #0000008a;
     top: 3px;
   }
   &:disabled {
-    background: #554955;
+    background: #30e8bf;
     border-color: #413e40;
+    -webkit-box-shadow: 0px 2px 0px 0px #0000008a;
+    box-shadow: 0px 2px 0px 0px #0000008a;
+    top: 3px;
   }
 }

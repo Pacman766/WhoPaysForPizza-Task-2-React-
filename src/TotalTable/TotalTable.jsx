@@ -1,6 +1,6 @@
 import React from 'react';
 import { convertToByn, roundNumber, splitPrice } from '../utiles';
-import './totalTable.scss';
+import './totaltable.scss';
 import TableTotalRow from './TableTotalRow/TableTotalRow';
 
 const TotalTable = ({
@@ -31,7 +31,11 @@ const TotalTable = ({
             <td className={isVegan ? 'vegan' : ''}>{name}</td>
             <td>{hasPaid ? 0 : sumPerPerson} BYN</td>
             <td>
-              <button className='btn-pay' disabled={hasPaid} onClick={() => onPayClick(name)}>
+              <button
+                className="btn-pay"
+                disabled={hasPaid}
+                onClick={() => onPayClick(name)}
+              >
                 {hasPaid ? 'Paid' : 'Pay'}
               </button>
             </td>

@@ -3,10 +3,10 @@ import './app.scss';
 
 import Header from './Header/Header';
 import { useState } from 'react';
-import LoadButton from './LoadButton/LoadButton';
+import MainButton from './MainButton/MainButton';
 import TotalTable from './TotalTable/TotalTable';
 import Pizza from './Pizza/Pizza'; 
-import Description from "./Description/Description";
+import SumText from "./SumText/SumText";
 
 export default function App() {
   const [error, setError] = useState(undefined);
@@ -120,7 +120,7 @@ export default function App() {
   return (
     <div>
       <Header />
-      <LoadButton onClick={handleClick} isLoading={isLoading} />
+      <MainButton onClick={handleClick} isLoading={isLoading} />
       {!error ? (
         <>
           {isLoading ? (
@@ -150,7 +150,7 @@ export default function App() {
             <p> </p>
           ) : (
             onceLoaded && (
-              <Description
+              <SumText
                 allPeople={allPeople}
                 pizzaEatersCount={diets.length}
               />

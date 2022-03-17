@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TotalTable = ({ name, amount }) => {
+const TableTotalRow = ({ name, amount }) => {
   return (
     <tr>
       <td className="final_sums">{name}</td>
@@ -11,4 +11,4 @@ const TotalTable = ({ name, amount }) => {
   );
 };
 
-export default TotalTable;
+export default TableTotalRow;

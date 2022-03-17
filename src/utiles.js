@@ -1,14 +1,14 @@
 export const splitPrice = (price) => {
-  const values = price.split(' ');
+  const values = price.split(" ");
   return { amount: Number(values[0]), currency: values[1] };
 };
 
 export const convertToByn = (currency, amount, currencyExchangeRates) => {
   switch (currency) {
-    case 'USD': {
+    case "USD": {
       return amount * currencyExchangeRates.USD;
     }
-    case 'EUR': {
+    case "EUR": {
       return amount * currencyExchangeRates.EUR;
     }
     default:
@@ -17,3 +17,4 @@ export const convertToByn = (currency, amount, currencyExchangeRates) => {
 };
 
 export const roundNumber = (number) => Math.floor(number * 10) / 10;
+
