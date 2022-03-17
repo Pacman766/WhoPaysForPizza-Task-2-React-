@@ -31,7 +31,7 @@ const TotalTable = ({
             <td className={isVegan ? 'vegan' : ''}>{name}</td>
             <td>{hasPaid ? 0 : sumPerPerson} BYN</td>
             <td>
-              <button disabled={hasPaid} onClick={() => onPayClick(name)}>
+              <button className='btn-pay' disabled={hasPaid} onClick={() => onPayClick(name)}>
                 {hasPaid ? 'Paid' : 'Pay'}
               </button>
             </td>
