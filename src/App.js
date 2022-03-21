@@ -99,13 +99,11 @@ export default function App() {
         pizzaType = 'meat';
       }
 
-      //
+      // get type, name and price of pizza + currency and check if loaded
       const [orderDetails, currencyExchangeRates] = await Promise.all([
         fetchPizzaOrderAsync(pizzaType, pizzaEaters.length),
         fetchCurrencyExchangeRateAsync(),
       ]);
-      console.log(orderDetails);
-      console.log(currencyExchangeRates);
       setOrderDetails(orderDetails);
       setCurrencyExchangeRates(currencyExchangeRates);
       if (!onceLoaded) {
@@ -118,6 +116,7 @@ export default function App() {
     }
   };
 
+  // set paid by click
   const handlePayClick = (name) => {
     setDiets((diets) => {
       const dietsCopy = [...diets];
