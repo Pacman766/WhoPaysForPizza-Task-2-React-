@@ -130,6 +130,7 @@ export default function App() {
     <div>
       <Header />
       <MainButton onClick={handleClick} isLoading={isLoading} />
+      {/* if no error and is loading show "wating" and, when loaded, show table */}
       {!error ? (
         <>
           {isLoading ? (
@@ -145,6 +146,7 @@ export default function App() {
               />
             )
           )}
+          {/* if loading show nothing, when loaded, show sliced pizza*/}
           {isLoading ? (
             <p> </p>
           ) : (
@@ -155,6 +157,7 @@ export default function App() {
               />
             )
           )}
+          {/* if loading show nothing, when loaded, show all people and pizza-eaters*/}
           {isLoading ? (
             <p> </p>
           ) : (
