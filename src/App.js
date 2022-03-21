@@ -5,8 +5,8 @@ import Header from './Header/Header';
 import { useState } from 'react';
 import MainButton from './MainButton/MainButton';
 import TotalTable from './TotalTable/TotalTable';
-import Pizza from './Pizza/Pizza'; 
-import SumText from "./SumText/SumText";
+import Pizza from './Pizza/Pizza';
+import SumText from './SumText/SumText';
 
 export default function App() {
   const [error, setError] = useState(undefined);
@@ -17,6 +17,7 @@ export default function App() {
   const [currencyExchangeRates, setCurrencyExchangeRates] = useState({});
   const [diets, setDiets] = useState([]);
 
+  // < ------- get guests list ------- >
   const fetchGuestsAsync = async () => {
     try {
       const response = await fetch(
@@ -30,6 +31,7 @@ export default function App() {
     }
   };
 
+  // < ------- encode and get people with there diet ------- >
   const fetchDietsAsync = async (people) => {
     const peopleNamesEncoded = people.map(({ name }) =>
       encodeURIComponent(name)
@@ -46,6 +48,7 @@ export default function App() {
     }
   };
 
+  // < ------- get pizza by slices ------- >
   const fetchPizzaOrderAsync = async (pizzaType, sliceCount) => {
     try {
       const response = await fetch(
@@ -58,6 +61,7 @@ export default function App() {
     }
   };
 
+  // < ------- get currency ------- >
   const fetchCurrencyExchangeRateAsync = async () => {
     try {
       const response = await fetch(
@@ -74,28 +78,34 @@ export default function App() {
     try {
       setisLoading(true);
 
+      // filter by those who eat pizza
       const guests = await fetchGuestsAsync();
       setAllPeople(guests.length);
       const pizzaEaters = guests.filter((element) => element.eatsPizza);
 
+      // filter by vegans
       const diets = await fetchDietsAsync(pizzaEaters);
       setDiets(diets.map((diet) => ({ ...diet, hasPaid: false })));
       const vegans = diets.filter((element) => element.isVegan);
 
       let pizzaType = '';
 
+      // random vegan or meat
       if (vegans.length / pizzaEaters.length >= 0.51) {
-        const pizzaWithoutMeat = ['vagan', 'sheese'];
+        const pizzaWithoutMeat = ['vegan', 'cheese'];
         pizzaType =
           pizzaWithoutMeat[Math.floor(Math.random() * pizzaWithoutMeat.length)];
       } else {
         pizzaType = 'meat';
       }
 
+      //
       const [orderDetails, currencyExchangeRates] = await Promise.all([
         fetchPizzaOrderAsync(pizzaType, pizzaEaters.length),
         fetchCurrencyExchangeRateAsync(),
       ]);
+      console.log(orderDetails);
+      console.log(currencyExchangeRates);
       setOrderDetails(orderDetails);
       setCurrencyExchangeRates(currencyExchangeRates);
       if (!onceLoaded) {
@@ -150,10 +160,7 @@ export default function App() {
             <p> </p>
           ) : (
             onceLoaded && (
-              <SumText
-                allPeople={allPeople}
-                pizzaEatersCount={diets.length}
-              />
+              <SumText allPeople={allPeople} pizzaEatersCount={diets.length} />
             )
           )}
         </>
